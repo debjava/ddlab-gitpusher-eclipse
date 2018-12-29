@@ -63,7 +63,7 @@ Install using the below button.
 
 or 
 
-use `https://sourceforge.net/projects/mygitpusher2019/files/` in Help -> Install New Software ... Dialog.
+use `https://sourceforge.net/projects/ddlab-gitpusher-eclipse/files/latest2019/` in Help -> Install New Software ... Dialog.
 
 or
 
