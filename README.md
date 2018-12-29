@@ -93,7 +93,7 @@ There may be some bugs or error, please feel free to report to me at deba.java@g
 
 Contributor
 ==========
-@Author : **Debadatta Mishra** [Konw me](https://about.me/debadattamishra)
+@Author : **Debadatta Mishra** [Know me](https://about.me/debadattamishra)
 
 Conclusion
 ==========
