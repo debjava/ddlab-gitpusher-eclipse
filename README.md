@@ -5,16 +5,16 @@ Eclipse Plugin for Code Push in GitHub and Bitbucket
 
 Introduction
 ============
-**Git Pusher** is an eclipse plugin which helps in pushing the complete code or code snippet directly to GitHub or Bitbucket. This plugin does not provide any git functionality, it only provides a easy way to keep the code in GitHub or Bitbucket for future references. Many times, developers write good code and code goes into lost world after some time. This plugin will help you to save and share your code in GitHub and Bitbucket.
+**Git Pusher** is an eclipse plugin which helps in pushing the complete codebase or code snippet directly to GitHub or Bitbucket. This plugin does not provide any git functionality, it only provides a easy way to keep the code in GitHub or Bitbucket for future references. Many times, developers write good code and code goes into lost world after some time. This plugin will help you to save and share your code in GitHub and Bitbucket.
 
 
 Advantages of Gitpusher
 ================
 
-* **A hassle free way to push code base in GitHub or Bitbucket**
+* **A hassle free way to push code base in GitHub or Bitbucket.**
 * **Easy to create a code snippet and share with your friends.**
-* **A non blocking way to push the code or code snippet**
-* **Easy to work as it has been developed using pure java and it is open source.**
+* **A non blocking way to push the code or code snippet.**
+* **Easy to work as it has been developed using pure java and it is free and open source.**
 
 Technology Stack
 ================
@@ -92,7 +92,7 @@ There may be some bugs or error, please feel free to report to me at deba.java@g
 
 Contributor
 ==========
-@Author : **Debadatta Mishra** [Know me](https://about.me/debadattamishra)
+@Author : **Debadatta Mishra (PIKU)** [Know me](https://about.me/debadattamishra)
 
 Conclusion
 ==========
