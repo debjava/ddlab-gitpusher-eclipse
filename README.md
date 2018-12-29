@@ -67,7 +67,7 @@ use `https://sourceforge.net/projects/ddlab-gitpusher-eclipse/files/latest2019/`
 
 or
 
-Please Download [<img src="./images/download32.png">](https://github.com/debjava/ddlab.gitpusher/raw/master/download/ddlab.gitpusher.updatesite-1.0.0.zip) from the latest download directory.
+Please Download [<img src="./images/download32.png">](https://github.com/debjava/ddlab-gitpusher-eclipse/raw/master/download/ddlab.gitpusher.updatesite-1.0.0.zip) from the latest download directory.
 
 Download the zip file and install as in Help -> Install New Software -> Add... -> Archive... Dialog.
 
