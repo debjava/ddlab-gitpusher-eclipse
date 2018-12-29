@@ -67,9 +67,7 @@ use `https://sourceforge.net/projects/mygitpusher2019/files/` in Help -> Install
 
 or
 
-Please [Download-Plugin-Zip](https://github.com/debjava/ddlab.gitpusher/raw/master/download/ddlab.gitpusher.updatesite-1.0.0.zip) from the latest download directory.
-
-Please Download [<img src="./images/download48.png">](https://github.com/debjava/ddlab.gitpusher/raw/master/download/ddlab.gitpusher.updatesite-1.0.0.zip) from the latest download directory.
+Please Download [<img src="./images/download32.png">](https://github.com/debjava/ddlab.gitpusher/raw/master/download/ddlab.gitpusher.updatesite-1.0.0.zip) from the latest download directory.
 
 Download the zip file and install as in Help -> Install New Software -> Add... -> Archive... Dialog.
 
