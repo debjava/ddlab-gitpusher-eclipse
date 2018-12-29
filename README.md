@@ -51,7 +51,7 @@ Install using the below button.
   <tbody>
     <tr style="border:none;">
       <td style="vertical-align: middle; padding-top: 10px; border: none;">
-        <a href="https://sourceforge.net/projects/mygitpusher2019/files/" title="Drag and drop onto a running Eclipse Main Toolbar to install Gitpusher plugin">
+        <a href="https://sourceforge.net/projects/ddlab-gitpusher-eclipse/files/latest2019/" title="Drag and drop onto a running Eclipse Main Toolbar to install Gitpusher plugin">
           <img src="./images/installbutton.png">
         </a>
       </td>
