@@ -3,11 +3,26 @@
  */
 package com.ddlab.gitpusher.bitbucket.core;
 
-import com.ddlab.gitpusher.core.*;
-import com.ddlab.gitpusher.exception.GenericGitPushException;
-import com.ddlab.gitpusher.util.HTTPUtil;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_ALL_REPO_API_URI;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_API_URI;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_CLONE_API_URI;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_CLONE_ERR_MSG;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_CREATE_API_URI;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_EXISTING_REPO_API_URI;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_GET_OR_CREATE_GIST_API_URI;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_REPO_ERR_MSG;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_SNIPPET_ERR_MSG;
+import static com.ddlab.gitpusher.util.CommonConstants.BITBUCKET_USER_API_URI;
+import static com.ddlab.gitpusher.util.CommonConstants.GENERIC_COMIT_MSG;
+import static com.ddlab.gitpusher.util.CommonConstants.GENERIC_LOCAL_GIT_EXIST;
+import static com.ddlab.gitpusher.util.CommonConstants.GENERIC_LOGIN_ERR_MSG;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -24,13 +39,15 @@ import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.HashSet;
-import java.util.Set;
-
-import static com.ddlab.gitpusher.util.CommonConstants.*;
+import com.ddlab.gitpusher.core.GitResponse;
+import com.ddlab.gitpusher.core.IErrorResponseParser;
+import com.ddlab.gitpusher.core.IGitHandler;
+import com.ddlab.gitpusher.core.IResponseParser;
+import com.ddlab.gitpusher.core.UserAccount;
+import com.ddlab.gitpusher.exception.GenericGitPushException;
+import com.ddlab.gitpusher.util.HTTPUtil;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * The Class BitBucketHandlerImpl.
@@ -165,11 +182,16 @@ public class BitBucketHandlerImpl implements IGitHandler {
     StringEntity jsonBodyRequest = new StringEntity(jsonRepo);
     httpPost.setEntity(jsonBodyRequest);
     httpPost.setHeader("Content-type", "application/json");
+    IErrorResponseParser<String, String> iErrorResponseParser = new BitBucketRepoErrorParserImpl();
     try {
       GitResponse gitResponse = HTTPUtil.getHttpGetOrPostResponse(httpPost);
-      if (gitResponse.getStatusCode().equals("401"))
+      if (gitResponse.getStatusCode().equals("400")) {
+        String errMsg = iErrorResponseParser.parseError(gitResponse.getResponseText());
+        System.out.println("Err msg : " + errMsg);
+        throw new GenericGitPushException(errMsg);
+      } else if (gitResponse.getStatusCode().equals("401"))
         throw new GenericGitPushException(GENERIC_LOGIN_ERR_MSG);
-      if (!gitResponse.getStatusCode().equals("200"))
+      else if (!gitResponse.getStatusCode().equals("200"))
         throw new GenericGitPushException(BITBUCKET_REPO_ERR_MSG);
     } catch (GenericGitPushException e) {
       throw e;

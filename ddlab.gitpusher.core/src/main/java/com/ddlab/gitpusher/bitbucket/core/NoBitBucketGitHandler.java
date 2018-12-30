@@ -3,14 +3,15 @@
  */
 package com.ddlab.gitpusher.bitbucket.core;
 
-import com.ddlab.gitpusher.core.IGitHandler;
-import com.ddlab.gitpusher.core.NoGitHandler;
-import com.ddlab.gitpusher.exception.GenericGitPushException;
-import org.apache.commons.io.FileUtils;
+import static com.ddlab.gitpusher.util.CommonUtil.HOME_GIT_PATH;
 
 import java.io.File;
 
-import static com.ddlab.gitpusher.util.CommonUtil.HOME_GIT_PATH;
+import org.apache.commons.io.FileUtils;
+
+import com.ddlab.gitpusher.core.IGitHandler;
+import com.ddlab.gitpusher.core.NoGitHandler;
+import com.ddlab.gitpusher.exception.GenericGitPushException;
 
 /**
  * The Class NoBitBucketGitHandler.
@@ -62,6 +63,17 @@ public class NoBitBucketGitHandler implements NoGitHandler {
     } catch (Exception e) {
       throw e;
     } finally {
+      deleteSilently(tempCloneDir);
+    }
+  }
+
+  /**
+   * Delete a folder silently
+   *
+   * @param tempCloneDir
+   */
+  private void deleteSilently(File tempCloneDir) {
+    if (tempCloneDir != null && tempCloneDir.exists()) {
       String dotGitDir = tempCloneDir.getAbsolutePath() + File.separator + ".git";
       FileUtils.deleteQuietly(new File(dotGitDir));
     }
